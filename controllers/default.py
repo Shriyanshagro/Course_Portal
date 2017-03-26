@@ -26,7 +26,7 @@ def index():
 
 @auth.requires_login()
 def admin():
-    if auth.user.role != 'Admin':
+    if auth.user.id != 19:
         redirect("home")
     user_table = None
     course_table = None
@@ -68,7 +68,7 @@ def admin():
 
 @auth.requires_login()
 def admin_verify():
-    if auth.user.role != 'Admin' or request.args(0) == None:
+    if auth.user.id != 19 or request.args(0) == None:
         redirect("home")
     user1_id = request.args(0)
     row = db(db.auth_user.id == user1_id).select()
@@ -88,6 +88,8 @@ def admin_verify():
 
 @auth.requires_login()
 def home():
+    if auth.user.id == 19:
+        redirect("admin")
     message = None
     auth_error = None
     courses = None
