@@ -1,0 +1,97 @@
+<div class="panel-heading">
+  <div class="glyphicon glyphicon-stats"></div> Marks
+</div>
+<div class="panel-body">
+  
+
+
+
+
+   
+      <!-- Default panel contents -->
+  {{if is_staff == 0:}}
+   <div class="panel panel-default">
+      <div class="panel-heading">Recent Marks Obtained</div>
+      <div class="panel-body">
+    <div class="table-responsive">
+     <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Exam</th>
+            <th>Marks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mid 1</td>
+            <td>{{=mid1_marks}}</td>
+          </tr>
+          <tr>
+            <td>Mid 2</td>
+            <td>{{=mid2_marks}}</td>
+          </tr>
+          <tr>
+            <td>End Sem</td>
+            <td>{{=sem_marks}}</td>
+          </tr>
+          {{for assignment in assignments:}}
+            <tr>
+            <td>{{=assignment.course_assignment_upload.aid.title}}</td>
+            <td>{{=assignment.course_assignment_upload.marks}} /  {{=assignment.course_assignment_upload.aid.total_marks}}</td>
+          </tr>
+          {{pass}}
+        </tbody>
+     </table>
+       </div>
+     <!-- <div class="col-md-12">
+      <img src="{{=URL('static','images/hist.png')}}">
+     </div>
+     --></div>
+  {{else:}}
+    <h3>Upload marks</h3>
+    <hr>
+    {{if len(rows) != 0: }}
+       <div class="table-responsive">           
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Sr no</th>
+            <th>Name</th>
+            <th>Mid 1</th>
+            <th>Mid 2</th>
+            <th>End term</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{ i = 1}}
+        {{ names = []}}
+          {{for row in rows:}}
+            <tr>
+              <td>{{=i}}</td>
+              <td>{{=row.sid.first_name}} {{=row.sid.last_name}}</td>
+              <td><input type="text" value="{{=row.mid1}}" name="mid1-{{=row.id}}"/></td>
+              <td><input type="text" value="{{=row.mid2}}" name="mid2-{{=row.id}}"/></td>
+              <td><input type="text" value="{{=row.sem}}" name="sem-{{=row.id}}" /></td>
+              {{i = i + 1}}
+              {{names.append("mid1-"+str(row.id))}}
+              {{names.append("mid2-"+str(row.id))}}
+              {{names.append("sem-"+str(row.id))}}
+            </tr>
+          {{pass}}
+              <tr>
+                <td colspan="5" class="center">
+                  <a href="#" class="btn btn-success" onclick='ajax("{{=URL("course","update_course_marks")}}",{{=names}},":eval")'>Update</a>
+                </td>
+              </tr>
+        </tbody>
+     </table>
+   </div>
+  {{else:}}
+      <p>No registered students</p>
+  {{pass}}
+  {{pass}}
+</div>
+
+
+    
+  
