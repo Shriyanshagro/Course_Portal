@@ -1,4 +1,3 @@
-# _@author_=shriyanshagro
 This App is a Courses Portal developed with web2py.
 
 Its domain is to use it for large domain for efficient useful service for university, faculty and schools, In university

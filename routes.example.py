@@ -31,9 +31,9 @@ routers = {
         languages = [lang for lang in possible_languages
                            if lang != 'default']
     ),
-	BASE : dict( 
-		default_application='edify', 
-   )  
+	BASE : dict(
+		default_application='Course_Portal', 
+   )
 }
 
 #NOTE! To change language in your application using these rules add this line

@@ -499,11 +499,10 @@ def feedback():
 	if(course and data):
 		to_id = [course.faculty.email]
 		to_id.append('adityagaykar@gmail.com') #course.faculty.email
-		sub = 'Edify: Feedback from '+auth.user.first_name+' '+auth.user.last_name+' for course '+course.name
+		sub = 'Course_Portal: Feedback from '+auth.user.first_name+' '+auth.user.last_name+' for course '+course.name
 		sub += ' [' + request.vars.query + ']'
 		mail.send(to=to_id,subject=sub,message=data)
 		#mail.send(to=['subash.k3110@gmail.com'],subject='test',message='hello'):
 		return "alert('Feeback sent successfully.')";
 	else:
 		return "alert('Error: invalid args')";
-

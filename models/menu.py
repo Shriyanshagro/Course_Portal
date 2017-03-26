@@ -5,8 +5,8 @@
 ## Customize your APP title, subtitle and menus here
 #########################################################################
 
-response.logo = A(B('Edify'),XML('&trade;&nbsp;'),
-                  _class="navbar-brand",_href="/edify/default/index",
+response.logo = A(B('Course Portal'),XML('&trade;&nbsp;'),
+                  _class="navbar-brand",_href="/Course_Portal/default/index",
                   _id="web2py-logo")
 response.title = request.application.replace('_',' ').title()
 response.subtitle = ''
@@ -136,4 +136,4 @@ def _():
         ]
 if DEVELOPMENT_MENU: _()
 
-if "auth" in locals(): auth.wikimenu() 
+if "auth" in locals(): auth.wikimenu()

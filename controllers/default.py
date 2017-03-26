@@ -21,7 +21,7 @@ def index():
     #response.flash = T("Hello World")
     if auth.user :
         redirect(URL("default","home"))
-    message="Welcome to Edify!"
+    message="Welcome to Course Portal!"
     return locals()#dict(message=T('Welcome to web2py!'))
 
 @auth.requires_login()
