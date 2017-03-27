@@ -284,3 +284,433 @@ success!
 success!
 success!
 success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2017-03-26T19:52:05.003854
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512),
+    gender TEXT,
+    role CHAR(512),
+    admin_verified CHAR(512)
+);
+success!
+timestamp: 2017-03-26T19:52:05.114611
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2017-03-26T19:52:05.203185
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2017-03-26T19:52:05.293375
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2017-03-26T19:52:05.382610
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2017-03-26T19:52:05.472221
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2017-03-26T19:52:05.572983
+CREATE TABLE course(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    faculty INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    course_type CHAR(512),
+    course_year INTEGER,
+    course_description CHAR(512),
+    mid1_max TEXT,
+    mid2_max TEXT,
+    sem_max TEXT
+);
+success!
+timestamp: 2017-03-26T19:52:05.673399
+CREATE TABLE course_ta(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cid INTEGER REFERENCES course (id) ON DELETE CASCADE  ,
+    sid INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    approval CHAR(512)
+);
+success!
+timestamp: 2017-03-26T19:52:05.774431
+CREATE TABLE course_registration(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cid INTEGER REFERENCES course (id) ON DELETE CASCADE  ,
+    sid INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    mid1 DOUBLE,
+    mid2 DOUBLE,
+    sem DOUBLE
+);
+success!
+timestamp: 2017-03-26T19:52:05.887830
+CREATE TABLE course_resources(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cid INTEGER REFERENCES course (id) ON DELETE CASCADE  ,
+    sid INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    title TEXT,
+    attachment CHAR(512),
+    upload_date TIMESTAMP
+);
+success!
+timestamp: 2017-03-26T19:52:05.977508
+CREATE TABLE course_assignments(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cid INTEGER REFERENCES course (id) ON DELETE CASCADE  ,
+    sid INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    total_marks INTEGER,
+    marks DOUBLE,
+    title TEXT,
+    attachment CHAR(512),
+    deadline TIMESTAMP,
+    upload_date TIMESTAMP
+);
+success!
+timestamp: 2017-03-26T19:52:06.067542
+CREATE TABLE course_assignment_upload(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    aid INTEGER REFERENCES course_assignments (id) ON DELETE CASCADE  ,
+    sid INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    attachment CHAR(512),
+    marks DOUBLE,
+    upload_date TIMESTAMP
+);
+success!
+timestamp: 2017-03-26T19:52:06.157084
+CREATE TABLE activity(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cid INTEGER REFERENCES course (id) ON DELETE CASCADE  ,
+    sid INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    description TEXT,
+    publish_date TIMESTAMP,
+    activity_scope TEXT
+);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
