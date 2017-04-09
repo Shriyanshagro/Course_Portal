@@ -1,10 +1,13 @@
 <div class="panel-heading">
-  <div class="glyphicon glyphicon-stats"></div> Discussion
+  <div class="glyphicon glyphicon-stats"></div> Posts
 </div>
 <div class="panel-body">
 
       <!-- Default panel contents -->
-    <h3>All topics here</h3>
+    <h3>{{=topic[0].heading}}</h3>
+				<h4>Created by: {{=topic[0].sid.first_name}} {{=topic[0].sid.last_name}}</h4>
+				<h4>Desciption: {{=topic[0].description}}</h4>
+				<h5> Created on:{{=topic[0].publish_date}} </h5>
     <hr>
     {{if len(rows) != 0: }}
        <div class="table-responsive">
@@ -12,13 +15,12 @@
         <thead>
           <tr>
             <th>Created by</th>
-            <th>Heading</th>
             <th>Description</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
 									<tr>
-											<td>{{=name}}</td>
 											<td><input type="text" value="heading" name="heading"/></td>
 											<td><input type="text" value="description" name="description"/></td>
 											<td >
@@ -29,10 +31,10 @@
           {{for row in rows:}}
             <tr>
               <td>{{=row.sid.first_name}} {{=row.sid.last_name}}</td>
-              <td>{{=row.heading}}</td>
               <td>{{=row.description}}</td>
+              <td>{{=row.publish_date}}</td>
 														<td >
-															<a href="#" onclick="ajax('{{=URL('course','post/'+str(row.id))}}',[],'course-panel')" class="btn btn-success" <div class="glyphicon glyphicon-stats"></div> View</a>
+															<a href="#" class="btn btn-success">View</a>
 														</td>
 													</tr>
           {{pass}}
@@ -40,6 +42,6 @@
      </table>
    </div>
   {{else:}}
-      <p>No existing topic</p>
+      <p>No existing post</p>
   {{pass}}
 </div>

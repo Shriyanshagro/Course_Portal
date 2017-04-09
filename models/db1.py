@@ -78,7 +78,7 @@ db.define_table('topic2',
 	Field('publish_date','datetime',default=datetime.datetime.now()),
 )
 
-db.define_table('post',
+db.define_table('post2',
 	Field('tid','reference topic2'),
 	Field('sid', 'reference auth_user'),
 	Field('description', 'text'),

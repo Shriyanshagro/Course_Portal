@@ -1,4 +1,5 @@
 import time,datetime
+import random
 
 POST_PER_PAGE=6
 
@@ -511,10 +512,15 @@ def feedback():
 @auth.requires_login()
 def topic():
 	course_id = request.args(0)
-	course = db(db.course.id == course_id).select()
-	if(len(course) == 0):
-		response.flash = "Invalid course"
-	else:
-		rows = db(db.topic2.cid == course_id).select()
-		name =  auth.user.first_name +" "+ auth.user.last_name
+	rows = db(db.topic2.cid == course_id).select()
+	name =  auth.user.first_name +" "+ auth.user.last_name
 	return locals()
+
+@auth.requires_login()
+def post():
+    # TODO add cid in the query too
+    topic_id = request.args(0)
+    topic = db(db.topic2.id == topic_id).select()
+    rows = db(db.post2.tid == topic_id).select()
+    # print topic[0].id,random.randint(0,10000),topic_id
+    return locals()
