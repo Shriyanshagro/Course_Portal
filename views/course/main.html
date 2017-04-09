@@ -27,6 +27,7 @@
 						<a href="#" onclick="ajax('{{=URL('course','resources/'+str(course_id))}}',[],'course-panel')" cid="{{=course_id}}" class="list-group-item"><div class="glyphicon glyphicon-list-alt"></div> Resources</a>
 						<a href="#" onclick="ajax('{{=URL('course','upload/'+str(course_id))}}',[],'course-panel')" cid="{{=course_id}}" class="list-group-item"><div class="glyphicon glyphicon-upload"></div> Upload</a>
 						<a href="#" onclick="ajax('{{=URL('course','marks/'+str(course_id))}}',[],'course-panel')" cid="{{=course_id}}" class="list-group-item"><div class="glyphicon glyphicon-stats"></div> Marks</a>
+						<a href="#" onclick="ajax('{{=URL('course','topic/'+str(course_id))}}',[],'course-panel')" cid="{{=course_id}}" class="list-group-item"><div class="glyphicon glyphicon-stats"></div> Discussion</a>
 
 						{{if auth.user.id == faculty:}}
 							<a href="#" onclick="ajax('{{=URL('course','approvals/'+str(course_id))}}',[],'course-panel')" cid="{{=course_id}}" class="list-group-item"><div class="glyphicon glyphicon-transfer"></div> TA Approvals</a>
@@ -153,5 +154,3 @@
     </form>
   </div>
 </div>
-
-

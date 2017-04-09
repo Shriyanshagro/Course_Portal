@@ -9,8 +9,8 @@ auth.settings.register_next = URL('home')
 
 #defining course table
 
-db.define_table('course', 
-	Field('name'), 
+db.define_table('course',
+	Field('name'),
 	Field('faculty','reference auth_user'),
 	Field('course_type',requires=IS_IN_SET(('Monsoon','Spring'))),
 	Field('course_year','integer',default=time.strftime("%Y")),
@@ -65,8 +65,22 @@ db.define_table('activity',
 	Field('cid', 'reference course'),
 	Field('sid', 'reference auth_user'),
 	Field('description', 'text'),
-	Field('publish_date','datetime',default=datetime.datetime.now()),	
+	Field('publish_date','datetime',default=datetime.datetime.now()),
 	Field('activity_scope','text',requires=IS_IN_SET(('faculty','student','ta','all')))
 	)
 
 
+db.define_table('topic2',
+	Field('cid', 'reference course'),
+	Field('sid', 'reference auth_user'),
+	Field('heading', 'text'),
+	Field('description', 'text'),
+	Field('publish_date','datetime',default=datetime.datetime.now()),
+)
+
+db.define_table('post',
+	Field('tid','reference topic2'),
+	Field('sid', 'reference auth_user'),
+	Field('description', 'text'),
+	Field('publish_date','datetime',default=datetime.datetime.now()),
+)

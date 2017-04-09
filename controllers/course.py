@@ -4,7 +4,7 @@ POST_PER_PAGE=6
 
 @auth.requires_login()
 def index():
-#list the courses available for current year for registration
+    #list the courses available for current year for registration
     courses = []
     page = request.args(0, cast=int, default=0)
     start = page*POST_PER_PAGE
@@ -506,3 +506,15 @@ def feedback():
 		return "alert('Feeback sent successfully.')";
 	else:
 		return "alert('Error: invalid args')";
+
+
+@auth.requires_login()
+def topic():
+	course_id = request.args(0)
+	course = db(db.course.id == course_id).select()
+	if(len(course) == 0):
+		response.flash = "Invalid course"
+	else:
+		rows = db(db.topic2.cid == course_id).select()
+		name =  auth.user.first_name +" "+ auth.user.last_name
+	return locals()

@@ -1,0 +1,50 @@
+<div class="panel-heading">
+  <div class="glyphicon glyphicon-stats"></div> Discussion
+</div>
+<div class="panel-body">
+
+
+
+
+
+
+      <!-- Default panel contents -->
+    <h3>All topics here</h3>
+    <hr>
+    {{if len(rows) != 0: }}
+       <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Created by</th>
+            <th>Heading</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+									<tr>
+											<td>{{=name}}</td>
+											<td><input type="text" value="heading" name="heading"/></td>
+											<td><input type="text" value="description" name="description"/></td>
+											<td >
+												<a href="#" class="btn btn-success">Create</a>
+											</td>
+										</tr>
+
+          {{for row in rows:}}
+            <tr>
+              <td>{{=row.sid.first_name}} {{=row.sid.last_name}}</td>
+              <td>{{=row.heading}}</td>
+              <td>{{=row.description}}</td>
+														<td >
+															<a href="#" class="btn btn-success">View</a>
+														</td>
+													</tr>
+          {{pass}}
+        </tbody>
+     </table>
+   </div>
+  {{else:}}
+      <p>No existing topic</p>
+  {{pass}}
+</div>
