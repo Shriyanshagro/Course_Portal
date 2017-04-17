@@ -1,7 +1,8 @@
 This App is a Courses Portal developed with web2py.
 
-Its domain is to use it for large domain for efficient useful service for university, faculty and schools. In university,
-each course to access to link e-learning to show course and its useful service like discussion forum, assignment tracking and grades submission.
+Users are categoried as "admin", "student" and "faculty".
+
+It serves for large domains such as university and schools, where it provide useful service like discussion forum, assignment  tracking, grades submission, resources distribution and feedback form. It basically provides a global platform for communication.
 
 **Screenshots of Portal**
 
